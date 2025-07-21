@@ -1,5 +1,6 @@
 import model.entities.CarRental;
 import model.entities.Vehicle;
+import model.services.BrazilTaxService;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
