@@ -1,15 +1,28 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import model.entities.CarRental;
+import model.entities.Vehicle;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Locale.setDefault(Locale.US);
+        Scanner sc = new Scanner(System.in);
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        System.out.println("Entre com os dados do aluguel");
+        System.out.print("Modelo do carro: ");
+        String carModel = sc.nextLine();
+        System.out.print("Retirada (dd/MM/yyyy hh:mm): ");
+        LocalDateTime start = LocalDateTime.parse(sc.nextLine(), fmt);
+        System.out.print("Retorno (dd/MM/yyyy hh:mm): ");
+        LocalDateTime finish = LocalDateTime.parse(sc.nextLine(), fmt);
+
+        CarRental cr = new CarRental(start, finish, new Vehicle(carModel));
+
+        sc.close();
+
     }
 }
